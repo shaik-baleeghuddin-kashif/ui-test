@@ -123,7 +123,7 @@ const New = () => {
                 ))}
               </Grid>
             ) : (
-              <Box sx={{ animation: 'fadeIn 0.5s ease-in' }}>
+              <Box sx={{ animation: 'fadeIn 0.5s ease-in', padding: 5 }}>
                 {SelectedForm && <SelectedForm onSubmitSuccess={handleSubmitSuccess} />}
               </Box>
             )}

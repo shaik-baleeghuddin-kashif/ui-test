@@ -18,6 +18,6 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    include: ['@mui/material', '@mui/x-date-pickers', 'date-fns'],
+    include: ['@mui/material'],
   },
 })

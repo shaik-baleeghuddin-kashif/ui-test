@@ -34,7 +34,9 @@ export function AppRoutes() {
       
       {/* Maintenance routes */}
       <Route path="/maintenance" element={<MaintenanceList />} />
+      <Route path="/maintenances" element={<MaintenanceList />} />
       <Route path="/maintenance/:id" element={<MaintenanceDetail />} />
+      <Route path="/maintenances/:id" element={<MaintenanceDetail />} />
       
       {/* Vendor routes */}
       <Route path="/vendors" element={<VendorList />} />
