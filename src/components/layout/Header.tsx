@@ -1,9 +1,5 @@
-// src/components/layout/Header.tsx
-
-import { ThemeToggle } from '../common/ThemeToggle';
-import { Menu, Notifications, AccountCircle } from '@mui/icons-material';
-import { Badge, IconButton, Tooltip } from '@mui/material';
-import { useLocation } from 'react-router-dom';
+import { Menu, Add } from '@mui/icons-material';
+import { useLocation, Link } from 'react-router-dom';
 
 interface HeaderProps {
   onMenuClick: () => void;
@@ -21,13 +17,13 @@ export function Header({ onMenuClick, isSidebarOpen }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-20 bg-background border-b border-border">
-      <div className="px-4 sm:px-6 lg:px-2 lg:ml-2 py-2">
+      <div className="px-4 sm:px-6 lg:px-2 lg:ml-2 lg:mr-10 py-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {isSidebarOpen ? "" : 
             <button
-            onClick={onMenuClick}
-            className="p-2 rounded-md text-foreground hover:bg-secondary"
+              onClick={onMenuClick}
+              className="p-2 rounded-md text-foreground hover:bg-secondary"
             >
               <Menu className="h-6 w-6" />
             </button>
@@ -37,22 +33,14 @@ export function Header({ onMenuClick, isSidebarOpen }: HeaderProps) {
             </h1>
           </div>
 
-          <div className="flex items-center space-x-2">
-            <ThemeToggle />
-            
-            <Tooltip title="Notifications">
-              <IconButton className="text-foreground">
-                <Badge badgeContent={3} color="primary">
-                  <Notifications />
-                </Badge>
-              </IconButton>
-            </Tooltip>
-
-            <Tooltip title="Account">
-              <IconButton className="text-foreground">
-                <AccountCircle />
-              </IconButton>
-            </Tooltip>
+          <div className="flex items-center">
+            <Link
+              to="/new"
+              className="flex items-center px-3 py-1 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              <Add className="h-2 w-2 mr-2" />
+              <span className='text-sm'>Create</span>
+            </Link>
           </div>
         </div>
       </div>

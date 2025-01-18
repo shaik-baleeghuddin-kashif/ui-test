@@ -6,8 +6,10 @@ import {
   People,
   Construction,
   Cable,
-  ChevronLeft
+  ChevronLeft,
+  Book
 } from '@mui/icons-material';
+import { ThemeToggle } from '../common/ThemeToggle';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -26,73 +28,118 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
     { path: '/approvals', icon: <TaskAlt />, label: 'Approvals' },
   ];
 
+  const BottomSection = ({ isOpen }: { isOpen: boolean }) => (
+    <div className={`border-t border-border mt-auto py-4 ${!isOpen && 'flex flex-col items-center'}`}>
+      <div className={`${!isOpen ? 'flex flex-col items-center space-y-4' : ''}`}>
+        <Link
+          to="/docs"
+          className={`flex items-center rounded-md transition-colors duration-200 text-foreground hover:bg-secondary
+            ${isOpen ? 'mx-4 mb-2 px-3 py-2' : 'p-2'}
+          `}
+        >
+          <Book className="h-5 w-5" />
+          {isOpen && <span className="ml-5 text-sm font-medium">API Docs</span>}
+        </Link>
+  
+        <div 
+          className={`flex items-center rounded-md transition-colors duration-200 text-foreground hover:bg-secondary
+            ${isOpen ? 'mx-3 mb-2 px-2 py-0' : 'p-0'}
+          `}
+        >
+          <div className="flex items-center">
+            <ThemeToggle />
+            {isOpen && <span className="ml-3 text-sm font-medium">Switch mode</span>}
+          </div>
+        </div>
+  
+        <div className={`flex items-center text-foreground
+          ${isOpen ? 'mx-3 px-3 py-2' : 'p-2'}
+        `}>
+          <img 
+            src="/stack/logo.svg" 
+            alt="User"
+            className="h-8 w-8 rounded-lg" 
+          />
+          {isOpen && <span className="ml-4 text-sm font-medium">John Doe</span>}
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <>
       {/* Mobile Sidebar */}
       <div
         className={`${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } fixed inset-y-0 left-0 z-30 w-64 bg-background border-r border-border transition-transform duration-300 ease-in-out lg:hidden`}
+        } fixed inset-y-0 left-0 z-30 w-64 bg-background border-r border-border transition-transform duration-300 ease-in-out lg:hidden flex flex-col h-full`}
       >
-        <div className="p-4 flex justify-between items-center">
-        {isOpen ? (
-            <>
+        <div className="flex flex-col min-h-0 h-full">
+          <div className="p-4 flex justify-between items-center">
+            {isOpen ? (
+              <>
+                <img src="/stack/logo.svg" alt="logo" className="h-8 w-8" />
+                <h1 className="logo-gradient-text text-lg font-bold">VENDEX</h1>
+              </>
+            ) : (
               <img src="/stack/logo.svg" alt="logo" className="h-8 w-8" />
-              <h1 className="logo-gradient-text text-lg font-bold">VENDEX</h1>
-            </>
-          ) : (
-            <img src="/stack/logo.svg" alt="logo" className="h-8 w-8" />
-          )}
-          <button
-            onClick={onToggle}
-            className="p-2 rounded-lg hover:bg-secondary text-foreground lg:hidden"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
+            )}
+            <button
+              onClick={onToggle}
+              className="p-2 rounded-lg hover:bg-secondary text-foreground lg:hidden"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          </div>
+          <nav className="mt-6 flex-1">
+            {navItems.map((item) => (
+              <SidebarItem
+                key={item.path}
+                item={item}
+                isActive={location.pathname.startsWith(item.path)}
+                isOpen={isOpen}
+              />
+            ))}
+          </nav>
+          <BottomSection isOpen={isOpen} />
         </div>
-        <nav className="mt-6">
-          {navItems.map((item) => (
-            <SidebarItem
-              key={item.path}
-              item={item}
-              isActive={location.pathname.startsWith(item.path)}
-            />
-          ))}
-        </nav>
       </div>
 
       {/* Desktop Sidebar */}
       <div
         className={`${
           isOpen ? 'w-56' : 'w-16'
-        } hidden lg:block fixed inset-y-0 left-0 z-30 bg-background border-r border-border transition-all duration-300 ease-in-out`}
+        } hidden lg:block fixed inset-y-0 left-0 z-30 bg-background border-r border-border transition-all duration-300 ease-in-out flex-col h-full`}
       >
-        <div className="p-4 flex items-center justify-between">
-          {isOpen ? (
-            <>
+        <div className="flex flex-col min-h-0 h-full">
+          <div className="p-4 flex items-center justify-between">
+            {isOpen ? (
+              <>
+                <img src="/stack/logo.svg" alt="logo" className="h-8 w-8" />
+                <h1 className="logo-gradient-text text-lg font-bold">VENDEX</h1>
+              </>
+            ) : (
               <img src="/stack/logo.svg" alt="logo" className="h-8 w-8" />
-              <h1 className="logo-gradient-text text-lg font-bold">VENDEX</h1>
-            </>
-          ) : (
-            <img src="/stack/logo.svg" alt="logo" className="h-8 w-8" />
-          )}
-          <button
-            onClick={onToggle}
-            className="p-2 rounded-lg hover:bg-secondary text-foreground"
-          >
-            {isOpen ? <ChevronLeft className="h-5 w-5" /> : ""}
-          </button>
+            )}
+            <button
+              onClick={onToggle}
+              className="p-2 rounded-lg hover:bg-secondary text-foreground"
+            >
+              {isOpen ? <ChevronLeft className="h-5 w-5" /> : ""}
+            </button>
+          </div>
+          <nav className={`mt-6 flex-1 ${!isOpen && 'flex flex-col items-center'}`}>
+            {navItems.map((item) => (
+              <SidebarItem
+                key={item.path}
+                item={item}
+                isActive={location.pathname.startsWith(item.path)}
+                isOpen={isOpen}
+              />
+            ))}
+          </nav>
+          <BottomSection isOpen={isOpen} />
         </div>
-        <nav className={`mt-6 ${isOpen ? '' : 'w-full items-center flex flex-col'}`}>
-          {navItems.map((item) => (
-            <SidebarItem
-              key={item.path}
-              item={item}
-              isActive={location.pathname.startsWith(item.path)}
-              isOpen={isOpen}
-            />
-          ))}
-        </nav>
       </div>
 
       {/* Overlay for mobile */}
