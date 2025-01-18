@@ -6,7 +6,7 @@ export interface OfficeData {
   }
   
   export interface Office {
-    id: number;
+    id: string;
     code: string;
     registered_name: string;
     established_date: string; // ISO 8601 date string
