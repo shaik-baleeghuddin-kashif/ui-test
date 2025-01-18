@@ -1,4 +1,5 @@
 import { Menu, Add } from '@mui/icons-material';
+import { Tooltip } from '@mui/material';
 import { useLocation, Link } from 'react-router-dom';
 
 interface HeaderProps {
@@ -34,6 +35,7 @@ export function Header({ onMenuClick, isSidebarOpen }: HeaderProps) {
           </div>
 
           <div className="flex items-center">
+            <Tooltip title="Create New Record">
             <Link
               to="/new"
               className="flex items-center px-3 py-1 rounded-md bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
@@ -41,6 +43,7 @@ export function Header({ onMenuClick, isSidebarOpen }: HeaderProps) {
               <Add className="h-2 w-2 mr-2" />
               <span className='text-sm'>Create</span>
             </Link>
+            </Tooltip>
           </div>
         </div>
       </div>

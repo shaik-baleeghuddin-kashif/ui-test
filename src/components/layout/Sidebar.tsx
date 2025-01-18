@@ -10,6 +10,7 @@ import {
   Book
 } from '@mui/icons-material';
 import { ThemeToggle } from '../common/ThemeToggle';
+import { Tooltip } from '@mui/material';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -20,7 +21,7 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
   const location = useLocation();
 
   const navItems = [
-    { path: '/dashboard', icon: <Dashboard />, label: 'Dashboard' },
+    { path: '/dashboard', icon: <Dashboard />, label: 'Dashboard'},
     { path: '/offices', icon: <Business />, label: 'Offices' },
     { path: '/vendors', icon: <People />, label: 'Vendors' },
     { path: '/circuits', icon: <Cable />, label: 'Circuits' },
@@ -31,15 +32,17 @@ export function Sidebar({ isOpen, onToggle }: SidebarProps) {
   const BottomSection = ({ isOpen }: { isOpen: boolean }) => (
     <div className={`border-t border-border mt-auto py-4 ${!isOpen && 'flex flex-col items-center'}`}>
       <div className={`${!isOpen ? 'flex flex-col items-center space-y-4' : ''}`}>
+        <Tooltip title="API Documentation">
         <Link
           to="/docs"
           className={`flex items-center rounded-md transition-colors duration-200 text-foreground hover:bg-secondary
             ${isOpen ? 'mx-4 mb-2 px-3 py-2' : 'p-2'}
-          `}
-        >
+            `}
+            >
           <Book className="h-5 w-5" />
           {isOpen && <span className="ml-5 text-sm font-medium">API Docs</span>}
         </Link>
+        </Tooltip>
   
         <div 
           className={`flex items-center rounded-md transition-colors duration-200 text-foreground hover:bg-secondary
@@ -161,19 +164,21 @@ interface SidebarItemProps {
 
 function SidebarItem({ item, isActive, isOpen = true }: SidebarItemProps) {
   return (
+    <Tooltip title={item.label}>
     <Link
       to={item.path}
       className={`flex items-center rounded-md transition-colors duration-200
         ${
           isActive
-            ? 'logo-gradient text-white shadow-md'
-            : 'text-foreground hover:bg-secondary'
+          ? 'logo-gradient text-white shadow-md'
+          : 'text-foreground hover:bg-secondary'
         }
         ${isOpen ? 'mx-4 my-2 px-3 py-2' : 'm-1 p-2 justify-center h-fit w-fit'}
-      `}
-    >
+        `}
+        >
       <span className={`text-lg ${!isOpen && 'mx-auto'}`}>{item.icon}</span>
       {isOpen && <span className="ml-4 text-sm font-medium">{item.label}</span>}
     </Link>
+    </Tooltip>
   );
 }
