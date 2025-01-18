@@ -18,7 +18,7 @@ export function Header({ onMenuClick, isSidebarOpen }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-20 bg-background border-b border-border">
-      <div className="px-4 sm:px-6 lg:px-2 lg:ml-2 lg:mr-10 py-2">
+      <div className="px-4 sm:px-6 lg:px-2 lg:ml-2 lg:mr-8 py-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             {isSidebarOpen ? "" : 
