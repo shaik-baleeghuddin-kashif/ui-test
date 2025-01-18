@@ -103,16 +103,17 @@ const New = () => {
                     >
                       <CardContent>
                         <Box sx={{ mb: 2 }}>
-                          <Icon sx={{ fontSize: 40, color: 'primary.main' }} />
+                          <Icon sx={{ fontSize: 40 }} className='text-primary' />
                         </Box>
                         <Typography variant="h6" gutterBottom>
                           {title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }} >
                           {description}
                         </Typography>
-                        <Button 
-                          variant="outlined" 
+                        <Button
+                          variant="outlined"
+                          className='font-bold !text-primary !border-primary hover:!bg-primary hover:!text-primary-foreground'
                           fullWidth
                         >
                           Create {title}
