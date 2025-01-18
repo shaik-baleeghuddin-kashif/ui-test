@@ -47,29 +47,29 @@ export function Footer() {
           <p className="logo-gradient-text font-bold">{' by NOC '}</p>
         </div>
         <nav className="flex flex-wrap justify-center sm:justify-end space-x-12">
-          {/* Help Vendex with Slack link */}
+          {/* Proj Vendex with Slack link */}
           <a
-            href="https://slack.com/channel-link" // Replace with the actual Slack channel link
+            href="https://slack.com/channel-link"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-primary transition-colors mb-1 sm:mb-0"
           >
             <SlackIcon fontSize="small" />
-            Help Vendex
+            Proj-Vendex
           </a>
           {/* Report Desflow with ticketing tool link */}
           <a
-            href="https://ticketingtool.com" // Replace with the actual ticketing tool link
+            href="https://ticketingtool.com"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:text-primary transition-colors mb-1 sm:mb-0"
           >
             <LocalActivityIcon fontSize="small" />
-            Report Desflow
+            Report-Desflow
           </a>
           {/* Email link */}
           <a
-            href="mailto:support@example.com" // Replace with the actual support email address
+            href="mailto:support@example.com"
             className="flex items-center gap-2 hover:text-primary transition-colors"
           >
             <EmailIcon fontSize="small" />
