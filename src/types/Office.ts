@@ -17,9 +17,6 @@ export interface OfficeData {
     approved_by?: string;
     last_approved_by?: string;
     urid?: number;
-    image_type?: string;
-    image?: string; // Base64 encoded string
-    image_url?: string;
     desflow?: string;
     description?: string;
     created_at: string; // ISO 8601 date string
@@ -36,9 +33,6 @@ export interface OfficeData {
     office_status: string;
     poc: POC;
     address: Address;
-    image_type?: string;
-    image?: string; // Base64 encoded string
-    image_url?: string;
     desflow?: string;
     description?: string;
   }

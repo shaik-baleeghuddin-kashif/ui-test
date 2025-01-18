@@ -23,9 +23,6 @@ export interface CircuitData {
     approved_by: string;
     last_approved_by: string;
     urid: number;
-    image_type?: string;
-    image?: string; // Changed from []byte to string (base64 encoded)
-    image_url?: string;
     desflow?: string;
     description?: string;
     created_at: string; // ISO 8601 date string
@@ -48,9 +45,6 @@ export interface CircuitData {
     mtu_size?: string;
     redundancy?: string;
     is_upstack_support?: boolean;
-    image_type?: string;
-    image?: string; // Changed from []byte to string (base64 encoded)
-    image_url?: string;
     desflow?: string;
     description?: string;
   }

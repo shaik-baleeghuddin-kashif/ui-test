@@ -113,7 +113,7 @@ const New = () => {
                         </Typography>
                         <Button
                           variant="outlined"
-                          className='font-bold !text-primary !border-primary hover:!bg-primary hover:!text-primary-foreground'
+                          className='font-bold !text-primary !border-primary hover:!bg-primary/10'
                           fullWidth
                         >
                           Create {title}

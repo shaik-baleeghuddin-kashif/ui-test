@@ -38,7 +38,7 @@ const UnAuthorized = () => {
             size="large"
             startIcon={<ArrowBack />}
             onClick={() => navigate(-1)}
-            className="w-full py-3 normal-case text-base border-primary text-primary hover:bg-primary/5"
+            className="w-full py-3 normal-case text-base [&.MuiButton-root]:border-primary [&.MuiButton-root]:text-primary hover:bg-primary/5"
           >
             Go Back
           </Button>
