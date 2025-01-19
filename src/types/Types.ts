@@ -25,3 +25,9 @@ export interface Response {
     id: number;
   }
   
+  export interface FetchOptions {
+    filter?: Record<string, string | number | boolean>;
+    orderBy?: string[];
+    pageSize?: number;
+    offset?: number;
+}
