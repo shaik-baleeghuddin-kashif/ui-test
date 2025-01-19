@@ -1,14 +1,18 @@
 import { useFetch } from '../hooks/useFetch';
 import { FetchOptions } from '../types/Types';
 
-
-
 export const getOffices = async (options?: FetchOptions) => {
-    const response =  useFetch("offices", options);
+    try {
+        const response = await useFetch("offices", options); // Await once here
 
-    if ((await response).data.code === 200) {
-        return (await response).data.data;
-    } else {
-        throw new Error((await response).data.message);
+        // Check if the response is successful and return the data accordingly
+        if (response.data.code === 200) {
+            return response.data.data;
+        } else {
+            throw new Error(response.data.message || "Failed to fetch data");
+        }
+    } catch (error) {
+        console.error("Error fetching offices:", error);
+        throw new Error("Failed to fetch offices");
     }
-}
+};

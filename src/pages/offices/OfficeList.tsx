@@ -9,9 +9,9 @@ const OfficeList = () => {
         pageSize: 10,
         offset: 0,
       });
-      console.log(data);
+      console.log(data); // The offices data will be logged here
     } catch (error) {
-      console.error(error);
+      console.error(error); // Log any errors here
     }
   };
 
